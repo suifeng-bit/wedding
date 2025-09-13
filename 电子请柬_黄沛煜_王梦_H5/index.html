@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>黄沛煜 ♥ 王梦 · 电子请柬</title>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no"/>
+<style>
+  :root {
+    --gold:#C7A76C;
+    --text:#222;
+    --muted:#666;
+    --bg:#f8f6f2;
+  }
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans GB","PingFang SC","Microsoft Yahei", Georgia, serif;}
+  .hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg,#ffffff,#f5efe4);}
+  .shine{position:absolute;inset:-20%;background:radial-gradient( circle at 30% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 40% ),
+                           radial-gradient( circle at 80% 60%, rgba(255,255,255,.6), rgba(255,255,255,0) 50% ); filter: blur(3px); animation: glow 10s ease-in-out infinite alternate;pointer-events:none;}
+  @keyframes glow{from{transform:scale(1)}to{transform:scale(1.2)}}
+  h1{letter-spacing:.12em;font-weight:600;margin:0 0 .4rem;font-size:1.8rem;}
+  h1 .heart{color:var(--gold);}
+  .meta{text-align:center;line-height:1.8;font-size:.95rem;color:var(--muted);}
+  .enter{margin-top:1.2rem;padding:.9rem 1.2rem;border:1px solid var(--gold);color:#775; background:#fff; border-radius:999px;font-size:.95rem;letter-spacing:.2em}
+  .enter:active{opacity:.85}
+  .music-btn{position:fixed;right:.8rem;top:.8rem;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e5e0d6;display:flex;align-items:center;justify-content:center;z-index:20;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+  .music-btn.playing::after{content:'♪';animation:spin 5s linear infinite;}
+  .music-btn::after{content:'♫'}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* gallery */
+  .gallery{position:relative;height:100vh;overflow:hidden;background:#000;}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1200ms ease;display:flex;align-items:center;justify-content:center;}
+  .slide.active{opacity:1}
+  .slide img{width:100%;height:100%;object-fit:cover}
+  .caption{position:absolute;left:0;right:0;bottom:0;color:#fff;text-align:center;padding:1.2rem 1rem;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.55));font-size:.95rem;letter-spacing:.1em}
+  .dots{position:absolute;left:0;right:0;bottom:.8rem;display:flex;gap:.35rem;justify-content:center;z-index:3}
+  .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5)}
+  .dot.active{background:#fff}
+  /* invite */
+  .invite{padding:2.2rem 1.3rem; text-align:center; background:#fff;}
+  .title{font-size:1.2rem; letter-spacing:.35em; color:var(--gold);margin-bottom:.8rem}
+  .card{max-width:760px;margin:0 auto;border:1px solid #eee;box-shadow:0 10px 30px rgba(0,0,0,.06);border-radius:18px;padding:1.2rem 1rem; background:linear-gradient(180deg,#fff,#faf7f1);}
+  .kv{font-size:1.6rem;margin:.2rem 0 .8rem 0;letter-spacing:.25em}
+  .info{line-height:2; color:#555}
+  .btns{display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-top:1rem}
+  .btn{padding:.76rem 1.1rem; border-radius:12px; border:1px solid var(--gold); color:#7a6843; background:#fff; text-decoration:none; font-size:.95rem}
+  .foot{text-align:center;color:#999;font-size:.8rem;padding:1.5rem 1rem}
+</style>
+</head>
+<body>
+<button id="musicBtn" class="music-btn" aria-label="音乐开关"></button>
+<section class="hero" id="landing">
+  <div class="shine"></div>
+  <h1>黄沛煜 <span class="heart">♥</span> 王梦</h1>
+  <div class="meta">
+    <div>公历 2025 年 10 月 6 日 · 中午 11:58</div>
+    <div>宜兴大酒店 · 二楼鸿福厅</div>
+  </div>
+  <button class="enter" id="enterBtn">进入请柬</button>
+</section>
+
+<section class="gallery" id="gallery" style="display:none;">
+  <div class="slide"><img src="assets/photo_01.jpg" alt="photo1"/></div><div class="slide"><img src="assets/photo_02.jpg" alt="photo2"/></div><div class="slide"><img src="assets/photo_03.jpg" alt="photo3"/></div><div class="slide"><img src="assets/photo_04.jpg" alt="photo4"/></div><div class="slide"><img src="assets/photo_05.jpg" alt="photo5"/></div><div class="slide"><img src="assets/photo_06.jpg" alt="photo6"/></div><div class="slide"><img src="assets/photo_07.jpg" alt="photo7"/></div>
+  <div class="caption">愿得一人心，白首不相离</div>
+  <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</section>
+
+<section class="invite" id="invite" style="display:none;">
+  <div class="card">
+    <div class="title">诚挚邀请</div>
+    <div class="kv">INVITATION</div>
+    <div class="info">
+      新郎：黄沛煜　　新娘：王梦<br/>
+      日期：2025年10月6日（周一）<br/>
+      时间：中午 11:58<br/>
+      地点：宜兴大酒店 二楼鸿福厅
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://uri.amap.com/search?keyword=%E5%AE%9C%E5%85%B4%E5%A4%A7%E9%85%92%E5%BA%97%20%E9%B8%BF%E7%A6%8F%E5%8E%85" target="_blank" rel="noreferrer">打开高德地图</a>
+      <a class="btn" href="https://map.baidu.com/search/%E5%AE%9C%E5%85%B4%E5%A4%A7%E9%85%92%E5%BA%97%20%E9%B8%BF%E7%A6%8F%E5%8E%85" target="_blank" rel="noreferrer">打开百度地图</a>
+    </div>
+  </div>
+  <div class="foot">感谢您的见证与祝福</div>
+</section>
+
+<audio id="bgm" src="assets/music.mp3" preload="auto" loop></audio>
+
+<script>
+  const enterBtn = document.getElementById('enterBtn');
+  const gallery = document.getElementById('gallery');
+  const invite = document.getElementById('invite');
+  const landing = document.getElementById('landing');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  const music = document.getElementById('bgm');
+  const musicBtn = document.getElementById('musicBtn');
+
+  let idx = 0, timer = null;
+
+  function show(i){
+    slides.forEach((s,k)=> s.classList.toggle('active', k===i));
+    dots.forEach((d,k)=> d.classList.toggle('active', k===i));
+  }
+  function next(){
+    idx = (idx + 1) % slides.length;
+    show(idx);
+  }
+  function start(){
+    show(idx);
+    timer = setInterval(next, 3500);
+  }
+
+  function enableMusic(){
+    music.play().then(()=>{
+      musicBtn.classList.add('playing');
+    }).catch(()=>{});
+  }
+  musicBtn.addEventListener('click', ()=>{
+    if(music.paused){ music.play(); musicBtn.classList.add('playing'); }
+    else { music.pause(); musicBtn.classList.remove('playing'); }
+  });
+
+  // swipe support
+  let startX = 0;
+  gallery.addEventListener('touchstart', e=>{ startX = e.changedTouches[0].clientX; }, {passive:true});
+  gallery.addEventListener('touchend', e=>{
+    let dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 40) {
+      clearInterval(timer);
+      if(dx<0) idx=(idx+1)%slides.length; else idx=(idx-1+slides.length)%slides.length;
+      show(idx);
+      timer=setInterval(next, 3500);
+    }
+  }, {passive:true});
+
+  enterBtn.addEventListener('click',()=>{
+    landing.style.display='none';
+    gallery.style.display='block';
+    invite.style.display='block';
+    enableMusic();
+    start();
+  });
+
+  // In case user scrolls to wake the audio gesture
+  document.addEventListener('touchend', ()=>{
+    if(landing.style.display==='none' && music.paused) enableMusic();
+  }, {passive:true});
+</script>
+</body>
+</html>
